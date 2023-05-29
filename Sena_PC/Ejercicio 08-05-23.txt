@@ -1,0 +1,775 @@
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| practica           |
+| sys                |
++--------------------+
+5 rows in set (0.00 sec)
+
+mysql> CREATE DATABASE IF NOT EXISTS pruebas;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> USE pruebas;
+Database changed
+mysql> /*
+   /*>  Si ya tienes una base de datos, sólo copia lo siguiente
+   /*> */
+mysql> CREATE TABLE tblUsuarios (
+    ->  idx INT PRIMARY KEY AUTO_INCREMENT,
+    ->  usuario VARCHAR(20),
+    ->  nombre VARCHAR(20),
+    ->  sexo VARCHAR(1),
+    ->  nivel TINYINT,
+    ->  email VARCHAR(50),
+    ->  telefono VARCHAR(20),
+    ->  marca VARCHAR(20),
+    ->  compañia VARCHAR(20),
+    ->  saldo FLOAT,
+    ->  activo BOOLEAN
+    -> );
+Query OK, 0 rows affected (0.02 sec)
+
+mysql>
+mysql> INSERT INTO tblUsuarios
+    -> VALUES
+    -> ('1','BRE2271','BRENDA','M','2','brenda@live.com','655-330-5736','SAMSUNG','IUSACELL','100','1'), ('2','OSC4677','OSCAR','H','3','oscar@gmail.com','655-143-4181','LG','TELCEL','0','1'),
+    -> ('3','JOS7086','JOSE','H','3','francisco@gmail.com','655-143-3922','NOKIA','MOVISTAR','150','1'), ('4','LUI6115','LUIS','H','0','enrique@outlook.com','655-137-1279','SAMSUNG','TELCEL','50','1'), ('5','LUI7072','LUIS','H','1','luis@hotmail.com','655-100-8260','NOKIA','IUSACELL','50','0'),
+    -> ('6','DAN2832','DANIEL','H','0','daniel@outlook.com','655-145-2586','SONY','UNEFON','100','1'), ('7','JAQ5351','JAQUELINE','M','0','jaqueline@outlook.com','655-330-5514','BLACKBERRY','AXEL','0','1'), ('8','ROM6520','ROMAN','H','2','roman@gmail.com','655-330-3263','LG','IUSACELL','50','1'), ('9','BLA9739','BLAS','H','0','blas@hotmail.com','655-330-3871','LG','UNEFON','100','1'),
+    -> ('10','JES4752','JESSICA','M','1','jessica@hotmail.com','655-143-6861','SAMSUNG','TELCEL','500','1'), ('11','DIA6570','DIANA','M','1','diana@live.com','655-143-3952','SONY','UNEFON','100','0'),
+    -> ('12','RIC8283','RICARDO','H','2','ricardo@hotmail.com','655-145-6049','MOTOROLA','IUSACELL','150','1'), ('13','VAL6882','VALENTINA','M','0','valentina@live.com','655-137-4253','BLACKBERRY','AT&T','50','0'), ('14','BRE8106','BRENDA','M','3','brenda2@gmail.com','655-100-1351','MOTOROLA','NEXTEL','150','1'), ('15','LUC4982','LUCIA','M','3','lucia@gmail.com','655-145-4992','BLACKBERRY','IUSACELL','0','1'), ('16','JUA2337','JUAN','H','0','juan@outlook.com','655-100-6517','SAMSUNG','AXEL','0','0'), ('17','ELP2984','ELPIDIO','H','1','elpidio@outlook.com','655-145-9938','MOTOROLA','MOVISTAR','500','1'), ('18','JES9640','JESSICA','M','3','jessica2@live.com','655-330-5143','SONY','IUSACELL','200','1'), ('19','LET4015','LETICIA','M','2','leticia@yahoo.com','655-143-4019','BLACKBERRY','UNEFON','100','1'), ('20','LUI1076','LUIS','H','3','luis2@live.com','655-100-5085','SONY','UNEFON','150','1'),
+    -> ('21','HUG5441','HUGO','H','2','hugo@live.com','655-137-3935','MOTOROLA','AT&T','500','1');
+Query OK, 21 rows affected (0.01 sec)
+Records: 21  Duplicates: 0  Warnings: 0
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| practica           |
+| pruebas            |
+| sys                |
++--------------------+
+6 rows in set (0.00 sec)
+
+mysql> use pruebas;
+Database changed
+mysql> select * from tblusuarios;
++-----+---------+-----------+------+-------+-----------------------+--------------+------------+----------+-------+--------+
+| idx | usuario | nombre    | sexo | nivel | email                 | telefono     | marca      | compañia | saldo | activo |
++-----+---------+-----------+------+-------+-----------------------+--------------+------------+----------+-------+--------+
+|   1 | BRE2271 | BRENDA    | M    |     2 | brenda@live.com       | 655-330-5736 | SAMSUNG    | IUSACELL |   100 |      1 |
+|   2 | OSC4677 | OSCAR     | H    |     3 | oscar@gmail.com       | 655-143-4181 | LG         | TELCEL   |     0 |      1 |
+|   3 | JOS7086 | JOSE      | H    |     3 | francisco@gmail.com   | 655-143-3922 | NOKIA      | MOVISTAR |   150 |      1 |
+|   4 | LUI6115 | LUIS      | H    |     0 | enrique@outlook.com   | 655-137-1279 | SAMSUNG    | TELCEL   |    50 |      1 |
+|   5 | LUI7072 | LUIS      | H    |     1 | luis@hotmail.com      | 655-100-8260 | NOKIA      | IUSACELL |    50 |      0 |
+|   6 | DAN2832 | DANIEL    | H    |     0 | daniel@outlook.com    | 655-145-2586 | SONY       | UNEFON   |   100 |      1 |
+|   7 | JAQ5351 | JAQUELINE | M    |     0 | jaqueline@outlook.com | 655-330-5514 | BLACKBERRY | AXEL     |     0 |      1 |
+|   8 | ROM6520 | ROMAN     | H    |     2 | roman@gmail.com       | 655-330-3263 | LG         | IUSACELL |    50 |      1 |
+|   9 | BLA9739 | BLAS      | H    |     0 | blas@hotmail.com      | 655-330-3871 | LG         | UNEFON   |   100 |      1 |
+|  10 | JES4752 | JESSICA   | M    |     1 | jessica@hotmail.com   | 655-143-6861 | SAMSUNG    | TELCEL   |   500 |      1 |
+|  11 | DIA6570 | DIANA     | M    |     1 | diana@live.com        | 655-143-3952 | SONY       | UNEFON   |   100 |      0 |
+|  12 | RIC8283 | RICARDO   | H    |     2 | ricardo@hotmail.com   | 655-145-6049 | MOTOROLA   | IUSACELL |   150 |      1 |
+|  13 | VAL6882 | VALENTINA | M    |     0 | valentina@live.com    | 655-137-4253 | BLACKBERRY | AT&T     |    50 |      0 |
+|  14 | BRE8106 | BRENDA    | M    |     3 | brenda2@gmail.com     | 655-100-1351 | MOTOROLA   | NEXTEL   |   150 |      1 |
+|  15 | LUC4982 | LUCIA     | M    |     3 | lucia@gmail.com       | 655-145-4992 | BLACKBERRY | IUSACELL |     0 |      1 |
+|  16 | JUA2337 | JUAN      | H    |     0 | juan@outlook.com      | 655-100-6517 | SAMSUNG    | AXEL     |     0 |      0 |
+|  17 | ELP2984 | ELPIDIO   | H    |     1 | elpidio@outlook.com   | 655-145-9938 | MOTOROLA   | MOVISTAR |   500 |      1 |
+|  18 | JES9640 | JESSICA   | M    |     3 | jessica2@live.com     | 655-330-5143 | SONY       | IUSACELL |   200 |      1 |
+|  19 | LET4015 | LETICIA   | M    |     2 | leticia@yahoo.com     | 655-143-4019 | BLACKBERRY | UNEFON   |   100 |      1 |
+|  20 | LUI1076 | LUIS      | H    |     3 | luis2@live.com        | 655-100-5085 | SONY       | UNEFON   |   150 |      1 |
+|  21 | HUG5441 | HUGO      | H    |     2 | hugo@live.com         | 655-137-3935 | MOTOROLA   | AT&T     |   500 |      1 |
++-----+---------+-----------+------+-------+-----------------------+--------------+------------+----------+-------+--------+
+21 rows in set (0.00 sec)
+
+mysql> select usuarios from tblusuarios where nivel=1 and nivel=3;
+ERROR 1054 (42S22): Unknown column 'usuarios' in 'field list'
+mysql> select usuario from tblusuarios where nivel=1 and nivel=3;
+Empty set (0.00 sec)
+
+mysql> select usuario from tblusuarios where nivel=1 and 3;
++---------+
+| usuario |
++---------+
+| LUI7072 |
+| JES4752 |
+| DIA6570 |
+| ELP2984 |
++---------+
+4 rows in set (0.00 sec)
+
+mysql> select idx, usuario, nivel from tblusuarios where nivel=1 and 3;
++-----+---------+-------+
+| idx | usuario | nivel |
++-----+---------+-------+
+|   5 | LUI7072 |     1 |
+|  10 | JES4752 |     1 |
+|  11 | DIA6570 |     1 |
+|  17 | ELP2984 |     1 |
++-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> select idx, usuario, nivel from tblusuarios where nivel=1 or 3;
++-----+---------+-------+
+| idx | usuario | nivel |
++-----+---------+-------+
+|   1 | BRE2271 |     2 |
+|   2 | OSC4677 |     3 |
+|   3 | JOS7086 |     3 |
+|   4 | LUI6115 |     0 |
+|   5 | LUI7072 |     1 |
+|   6 | DAN2832 |     0 |
+|   7 | JAQ5351 |     0 |
+|   8 | ROM6520 |     2 |
+|   9 | BLA9739 |     0 |
+|  10 | JES4752 |     1 |
+|  11 | DIA6570 |     1 |
+|  12 | RIC8283 |     2 |
+|  13 | VAL6882 |     0 |
+|  14 | BRE8106 |     3 |
+|  15 | LUC4982 |     3 |
+|  16 | JUA2337 |     0 |
+|  17 | ELP2984 |     1 |
+|  18 | JES9640 |     3 |
+|  19 | LET4015 |     2 |
+|  20 | LUI1076 |     3 |
+|  21 | HUG5441 |     2 |
++-----+---------+-------+
+21 rows in set (0.00 sec)
+
+mysql> select idx, usuario, nivel from tblusuarios where nivel=1 or nivel=3;
++-----+---------+-------+
+| idx | usuario | nivel |
++-----+---------+-------+
+|   2 | OSC4677 |     3 |
+|   3 | JOS7086 |     3 |
+|   5 | LUI7072 |     1 |
+|  10 | JES4752 |     1 |
+|  11 | DIA6570 |     1 |
+|  14 | BRE8106 |     3 |
+|  15 | LUC4982 |     3 |
+|  17 | ELP2984 |     1 |
+|  18 | JES9640 |     3 |
+|  20 | LUI1076 |     3 |
++-----+---------+-------+
+10 rows in set (0.00 sec)
+
+mysql> select nombre, telefono from tblusuarios where marca!="blackberry";
++---------+--------------+
+| nombre  | telefono     |
++---------+--------------+
+| BRENDA  | 655-330-5736 |
+| OSCAR   | 655-143-4181 |
+| JOSE    | 655-143-3922 |
+| LUIS    | 655-137-1279 |
+| LUIS    | 655-100-8260 |
+| DANIEL  | 655-145-2586 |
+| ROMAN   | 655-330-3263 |
+| BLAS    | 655-330-3871 |
+| JESSICA | 655-143-6861 |
+| DIANA   | 655-143-3952 |
+| RICARDO | 655-145-6049 |
+| BRENDA  | 655-100-1351 |
+| JUAN    | 655-100-6517 |
+| ELPIDIO | 655-145-9938 |
+| JESSICA | 655-330-5143 |
+| LUIS    | 655-100-5085 |
+| HUGO    | 655-137-3935 |
++---------+--------------+
+17 rows in set (0.00 sec)
+
+mysql> select idx, usuario, nivel from tblusuarios where nivel=3;
++-----+---------+-------+
+| idx | usuario | nivel |
++-----+---------+-------+
+|   2 | OSC4677 |     3 |
+|   3 | JOS7086 |     3 |
+|  14 | BRE8106 |     3 |
+|  15 | LUC4982 |     3 |
+|  18 | JES9640 |     3 |
+|  20 | LUI1076 |     3 |
++-----+---------+-------+
+6 rows in set (0.00 sec)
+
+mysql> select idx, usuario, nivel from tblusuarios where nivel=0;
++-----+---------+-------+
+| idx | usuario | nivel |
++-----+---------+-------+
+|   4 | LUI6115 |     0 |
+|   6 | DAN2832 |     0 |
+|   7 | JAQ5351 |     0 |
+|   9 | BLA9739 |     0 |
+|  13 | VAL6882 |     0 |
+|  16 | JUA2337 |     0 |
++-----+---------+-------+
+6 rows in set (0.00 sec)
+
+mysql> select idx, usuario, nivel from tblusuarios where nivel=1;
++-----+---------+-------+
+| idx | usuario | nivel |
++-----+---------+-------+
+|   5 | LUI7072 |     1 |
+|  10 | JES4752 |     1 |
+|  11 | DIA6570 |     1 |
+|  17 | ELP2984 |     1 |
++-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> select count(sexo) from tblusuarios where sexo="m" and sexo="f";
++-------------+
+| count(sexo) |
++-------------+
+|           0 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select count(m) from tblusuarios where sexo="m" and sexo="f";
+ERROR 1054 (42S22): Unknown column 'm' in 'field list'
+mysql> select count(sexo) from tblusuarios where sexo="M" or sexo="H";
++-------------+
+| count(sexo) |
++-------------+
+|          21 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select count(sexo) from tblusuarios where sexo="M" and sexo="H";
++-------------+
+| count(sexo) |
++-------------+
+|           0 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select count(sexo) from tblusuarios where sexo="M" and (
+    -> select count(sexo) from tblusuarios where sexo="H");
++-------------+
+| count(sexo) |
++-------------+
+|           9 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select sexo, count(sexo) from  tblusuarios group by sexo;
++------+-------------+
+| sexo | count(sexo) |
++------+-------------+
+| M    |           9 |
+| H    |          12 |
++------+-------------+
+2 rows in set (0.00 sec)
+
+mysql> select idx, usuario, telefono from tblususariuos
+    ->
+    -> ^X^C
+mysql> select idx, usuario, telefono from tblusuarios where compañia="at&t";
++-----+---------+--------------+
+| idx | usuario | telefono     |
++-----+---------+--------------+
+|  13 | VAL6882 | 655-137-4253 |
+|  21 | HUG5441 | 655-137-3935 |
++-----+---------+--------------+
+2 rows in set (0.00 sec)
+
+mysql> select compañia from tblusuarios by compañia dsc;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'by compañia dsc' at line 1
+mysql> select compañia from tblusuarios order by compañia dsc;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'dsc' at line 1
+mysql> select compañia from tblusuarios order by compañia desc;
++----------+
+| compañia |
++----------+
+| UNEFON   |
+| UNEFON   |
+| UNEFON   |
+| UNEFON   |
+| UNEFON   |
+| TELCEL   |
+| TELCEL   |
+| TELCEL   |
+| NEXTEL   |
+| MOVISTAR |
+| MOVISTAR |
+| IUSACELL |
+| IUSACELL |
+| IUSACELL |
+| IUSACELL |
+| IUSACELL |
+| IUSACELL |
+| AXEL     |
+| AXEL     |
+| AT&T     |
+| AT&T     |
++----------+
+21 rows in set (0.00 sec)
+
+mysql> select compañia from tblusuarios count(compañia) order by compañia desc;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'count(compañia) order by compañia desc' at line 1
+mysql> select compañia,count(compañia) from tblusuarios order by compañia desc;
+ERROR 1140 (42000): In aggregated query without GROUP BY, expression #1 of SELECT list contains nonaggregated column 'pruebas.tblusuarios.compañia'; this is incompatible with sql_mode=only_full_group_by
+mysql> select compañia, count(compañia) from tblusuarios group by compañia desc;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'desc' at line 1
+mysql> select compañia, count(compañia) from tblusuarios group by compañia order by compañia desc;
++----------+-----------------+
+| compañia | count(compañia) |
++----------+-----------------+
+| UNEFON   |               5 |
+| TELCEL   |               3 |
+| NEXTEL   |               1 |
+| MOVISTAR |               2 |
+| IUSACELL |               6 |
+| AXEL     |               2 |
+| AT&T     |               2 |
++----------+-----------------+
+7 rows in set (0.00 sec)
+
+mysql> select compañia from tblusuarios group by compañia order by compañia desc;
++----------+
+| compañia |
++----------+
+| UNEFON   |
+| TELCEL   |
+| NEXTEL   |
+| MOVISTAR |
+| IUSACELL |
+| AXEL     |
+| AT&T     |
++----------+
+7 rows in set (0.00 sec)
+
+mysql> select usuario from tblusuarios where estado=0;
+ERROR 1054 (42S22): Unknown column 'estado' in 'where clause'
+mysql> select usuario from tblusuarios where activo=0;
++---------+
+| usuario |
++---------+
+| LUI7072 |
+| DIA6570 |
+| VAL6882 |
+| JUA2337 |
++---------+
+4 rows in set (0.00 sec)
+
+mysql> select usuario,activo from tblusuarios where activo=0;
++---------+--------+
+| usuario | activo |
++---------+--------+
+| LUI7072 |      0 |
+| DIA6570 |      0 |
+| VAL6882 |      0 |
+| JUA2337 |      0 |
++---------+--------+
+4 rows in set (0.00 sec)
+
+mysql> select idx,usuario,activo from tblusuarios where activo=0;
++-----+---------+--------+
+| idx | usuario | activo |
++-----+---------+--------+
+|   5 | LUI7072 |      0 |
+|  11 | DIA6570 |      0 |
+|  13 | VAL6882 |      0 |
+|  16 | JUA2337 |      0 |
++-----+---------+--------+
+4 rows in set (0.00 sec)
+
+mysql> select idx, usuario, telefono from tblusuarios where saldo=0;
++-----+---------+--------------+
+| idx | usuario | telefono     |
++-----+---------+--------------+
+|   2 | OSC4677 | 655-143-4181 |
+|   7 | JAQ5351 | 655-330-5514 |
+|  15 | LUC4982 | 655-145-4992 |
+|  16 | JUA2337 | 655-100-6517 |
++-----+---------+--------------+
+4 rows in set (0.00 sec)
+
+mysql> select idx, usuario, telefono,saldo from tblusuarios where saldo=0;
++-----+---------+--------------+-------+
+| idx | usuario | telefono     | saldo |
++-----+---------+--------------+-------+
+|   2 | OSC4677 | 655-143-4181 |     0 |
+|   7 | JAQ5351 | 655-330-5514 |     0 |
+|  15 | LUC4982 | 655-145-4992 |     0 |
+|  16 | JUA2337 | 655-100-6517 |     0 |
++-----+---------+--------------+-------+
+4 rows in set (0.00 sec)
+
+mysql> select idx, usuario, telefono, min(saldo) from tblusuarios where sexo="H";
+ERROR 1140 (42000): In aggregated query without GROUP BY, expression #1 of SELECT list contains nonaggregated column 'pruebas.tblusuarios.idx'; this is incompatible with sql_mode=only_full_group_by
+mysql> select  min(saldo) from tblusuarios where sexo="H";
++------------+
+| min(saldo) |
++------------+
+|          0 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select  min(saldo), usuario from tblusuarios where sexo="H";
+ERROR 1140 (42000): In aggregated query without GROUP BY, expression #2 of SELECT list contains nonaggregated column 'pruebas.tblusuarios.usuario'; this is incompatible with sql_mode=only_full_group_by
+mysql> select  idx, saldo, sexo from tblusuarios group by sexo where sexo="H";
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'where sexo="H"' at line 1
+mysql> select  idx, saldo, sexo from tblusuarios where sexo="H" group by sexo;
+ERROR 1055 (42000): Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'pruebas.tblusuarios.idx' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+mysql> select  idx, saldo, sexo from tblusuarios where sexo="H" min(saldo) group by sexo;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'min(saldo) group by sexo' at line 1
+mysql> select  idx, min(saldo), sexo from tblusuarios where sexo="H" group by sexo;
+ERROR 1055 (42000): Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'pruebas.tblusuarios.idx' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+mysql> select  idx, min(saldo), sexo from tblusuarios where sexo="H";
+ERROR 1140 (42000): In aggregated query without GROUP BY, expression #1 of SELECT list contains nonaggregated column 'pruebas.tblusuarios.idx'; this is incompatible with sql_mode=only_full_group_by
+mysql> select  min(saldo) from tblusuarios where sexo="H";
++------------+
+| min(saldo) |
++------------+
+|          0 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select idx, usuario, telefono from tblusuarios where saldo>=300;
++-----+---------+--------------+
+| idx | usuario | telefono     |
++-----+---------+--------------+
+|  10 | JES4752 | 655-143-6861 |
+|  17 | ELP2984 | 655-145-9938 |
+|  21 | HUG5441 | 655-137-3935 |
++-----+---------+--------------+
+3 rows in set (0.00 sec)
+
+mysql> select idx, usuario, telefono,saldo from tblusuarios where saldo>=300;
++-----+---------+--------------+-------+
+| idx | usuario | telefono     | saldo |
++-----+---------+--------------+-------+
+|  10 | JES4752 | 655-143-6861 |   500 |
+|  17 | ELP2984 | 655-145-9938 |   500 |
+|  21 | HUG5441 | 655-137-3935 |   500 |
++-----+---------+--------------+-------+
+3 rows in set (0.00 sec)
+
+mysql> select marca, count(marca) from tblusuarios group by marca;
++------------+--------------+
+| marca      | count(marca) |
++------------+--------------+
+| SAMSUNG    |            4 |
+| LG         |            3 |
+| NOKIA      |            2 |
+| SONY       |            4 |
+| BLACKBERRY |            4 |
+| MOTOROLA   |            4 |
++------------+--------------+
+6 rows in set (0.00 sec)
+
+mysql> select marca, count(usuario) from tblusuarios group by marca;
++------------+----------------+
+| marca      | count(usuario) |
++------------+----------------+
+| SAMSUNG    |              4 |
+| LG         |              3 |
+| NOKIA      |              2 |
+| SONY       |              4 |
+| BLACKBERRY |              4 |
+| MOTOROLA   |              4 |
++------------+----------------+
+6 rows in set (0.00 sec)
+
+mysql> select marca, count(usuario) from tblusuarios group by marca order by usuario;
+ERROR 1055 (42000): Expression #1 of ORDER BY clause is not in GROUP BY clause and contains nonaggregated column 'pruebas.tblusuarios.usuario' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+mysql> select marca, count(usuario) from tblusuarios group by marca order by count(usuario);
++------------+----------------+
+| marca      | count(usuario) |
++------------+----------------+
+| NOKIA      |              2 |
+| LG         |              3 |
+| SAMSUNG    |              4 |
+| SONY       |              4 |
+| BLACKBERRY |              4 |
+| MOTOROLA   |              4 |
++------------+----------------+
+6 rows in set (0.00 sec)
+
+mysql> select marca, count(usuario) from tblusuarios group by marca order by count(usuario) desc;
++------------+----------------+
+| marca      | count(usuario) |
++------------+----------------+
+| SAMSUNG    |              4 |
+| SONY       |              4 |
+| BLACKBERRY |              4 |
+| MOTOROLA   |              4 |
+| LG         |              3 |
+| NOKIA      |              2 |
++------------+----------------+
+6 rows in set (0.00 sec)
+
+mysql> select idx, nombre, telefono from tblusuarios where marca != "LG";
++-----+-----------+--------------+
+| idx | nombre    | telefono     |
++-----+-----------+--------------+
+|   1 | BRENDA    | 655-330-5736 |
+|   3 | JOSE      | 655-143-3922 |
+|   4 | LUIS      | 655-137-1279 |
+|   5 | LUIS      | 655-100-8260 |
+|   6 | DANIEL    | 655-145-2586 |
+|   7 | JAQUELINE | 655-330-5514 |
+|  10 | JESSICA   | 655-143-6861 |
+|  11 | DIANA     | 655-143-3952 |
+|  12 | RICARDO   | 655-145-6049 |
+|  13 | VALENTINA | 655-137-4253 |
+|  14 | BRENDA    | 655-100-1351 |
+|  15 | LUCIA     | 655-145-4992 |
+|  16 | JUAN      | 655-100-6517 |
+|  17 | ELPIDIO   | 655-145-9938 |
+|  18 | JESSICA   | 655-330-5143 |
+|  19 | LETICIA   | 655-143-4019 |
+|  20 | LUIS      | 655-100-5085 |
+|  21 | HUGO      | 655-137-3935 |
++-----+-----------+--------------+
+18 rows in set (0.00 sec)
+
+mysql> select idx, nombre, marca, telefono from tblusuarios where marca != "LG";
++-----+-----------+------------+--------------+
+| idx | nombre    | marca      | telefono     |
++-----+-----------+------------+--------------+
+|   1 | BRENDA    | SAMSUNG    | 655-330-5736 |
+|   3 | JOSE      | NOKIA      | 655-143-3922 |
+|   4 | LUIS      | SAMSUNG    | 655-137-1279 |
+|   5 | LUIS      | NOKIA      | 655-100-8260 |
+|   6 | DANIEL    | SONY       | 655-145-2586 |
+|   7 | JAQUELINE | BLACKBERRY | 655-330-5514 |
+|  10 | JESSICA   | SAMSUNG    | 655-143-6861 |
+|  11 | DIANA     | SONY       | 655-143-3952 |
+|  12 | RICARDO   | MOTOROLA   | 655-145-6049 |
+|  13 | VALENTINA | BLACKBERRY | 655-137-4253 |
+|  14 | BRENDA    | MOTOROLA   | 655-100-1351 |
+|  15 | LUCIA     | BLACKBERRY | 655-145-4992 |
+|  16 | JUAN      | SAMSUNG    | 655-100-6517 |
+|  17 | ELPIDIO   | MOTOROLA   | 655-145-9938 |
+|  18 | JESSICA   | SONY       | 655-330-5143 |
+|  19 | LETICIA   | BLACKBERRY | 655-143-4019 |
+|  20 | LUIS      | SONY       | 655-100-5085 |
+|  21 | HUGO      | MOTOROLA   | 655-137-3935 |
++-----+-----------+------------+--------------+
+18 rows in set (0.00 sec)
+
+mysql> select compañia, count(compañia) from tblusuarios group by compañia order by compañia asc;
++----------+-----------------+
+| compañia | count(compañia) |
++----------+-----------------+
+| AT&T     |               2 |
+| AXEL     |               2 |
+| IUSACELL |               6 |
+| MOVISTAR |               2 |
+| NEXTEL   |               1 |
+| TELCEL   |               3 |
+| UNEFON   |               5 |
++----------+-----------------+
+7 rows in set (0.00 sec)
+
+mysql> select sum(saldo) from tblusuarios where compañia="unefon";
++------------+
+| sum(saldo) |
++------------+
+|        550 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select idx, usuario, nombre from tbluruarios where email like '%hotmail%';
+ERROR 1146 (42S02): Table 'pruebas.tbluruarios' doesn't exist
+mysql> select idx, usuario, nombre from tblusuarios where email like '%hotmail%';
++-----+---------+---------+
+| idx | usuario | nombre  |
++-----+---------+---------+
+|   5 | LUI7072 | LUIS    |
+|   9 | BLA9739 | BLAS    |
+|  10 | JES4752 | JESSICA |
+|  12 | RIC8283 | RICARDO |
++-----+---------+---------+
+4 rows in set (0.00 sec)
+
+mysql> select idx, usuario, nombre, email from tblusuarios where email like '%hotmail%';
++-----+---------+---------+---------------------+
+| idx | usuario | nombre  | email               |
++-----+---------+---------+---------------------+
+|   5 | LUI7072 | LUIS    | luis@hotmail.com    |
+|   9 | BLA9739 | BLAS    | blas@hotmail.com    |
+|  10 | JES4752 | JESSICA | jessica@hotmail.com |
+|  12 | RIC8283 | RICARDO | ricardo@hotmail.com |
++-----+---------+---------+---------------------+
+4 rows in set (0.00 sec)
+
+mysql> select idx, nombre, saldo, activo from tblusuarios where saldo=0 or activo=0;
++-----+-----------+-------+--------+
+| idx | nombre    | saldo | activo |
++-----+-----------+-------+--------+
+|   2 | OSCAR     |     0 |      1 |
+|   5 | LUIS      |    50 |      0 |
+|   7 | JAQUELINE |     0 |      1 |
+|  11 | DIANA     |   100 |      0 |
+|  13 | VALENTINA |    50 |      0 |
+|  15 | LUCIA     |     0 |      1 |
+|  16 | JUAN      |     0 |      0 |
++-----+-----------+-------+--------+
+7 rows in set (0.00 sec)
+
+mysql> select idx, usuario, nombre, telefono from tblusuarios where compañia="iusacell" or compañia="telcel";
++-----+---------+---------+--------------+
+| idx | usuario | nombre  | telefono     |
++-----+---------+---------+--------------+
+|   1 | BRE2271 | BRENDA  | 655-330-5736 |
+|   2 | OSC4677 | OSCAR   | 655-143-4181 |
+|   4 | LUI6115 | LUIS    | 655-137-1279 |
+|   5 | LUI7072 | LUIS    | 655-100-8260 |
+|   8 | ROM6520 | ROMAN   | 655-330-3263 |
+|  10 | JES4752 | JESSICA | 655-143-6861 |
+|  12 | RIC8283 | RICARDO | 655-145-6049 |
+|  15 | LUC4982 | LUCIA   | 655-145-4992 |
+|  18 | JES9640 | JESSICA | 655-330-5143 |
++-----+---------+---------+--------------+
+9 rows in set (0.00 sec)
+
+mysql> select idx, usuario, compañia, telefono from tblusuarios where compañia="iusacell" or compañia="telcel";
++-----+---------+----------+--------------+
+| idx | usuario | compañia | telefono     |
++-----+---------+----------+--------------+
+|   1 | BRE2271 | IUSACELL | 655-330-5736 |
+|   2 | OSC4677 | TELCEL   | 655-143-4181 |
+|   4 | LUI6115 | TELCEL   | 655-137-1279 |
+|   5 | LUI7072 | IUSACELL | 655-100-8260 |
+|   8 | ROM6520 | IUSACELL | 655-330-3263 |
+|  10 | JES4752 | TELCEL   | 655-143-6861 |
+|  12 | RIC8283 | IUSACELL | 655-145-6049 |
+|  15 | LUC4982 | IUSACELL | 655-145-4992 |
+|  18 | JES9640 | IUSACELL | 655-330-5143 |
++-----+---------+----------+--------------+
+9 rows in set (0.00 sec)
+
+mysql> select marcas from tblusuarios grup by marca order by marca asc;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'by marca order by marca asc' at line 1
+mysql> select marcas from tblusuarios group by marca order by marca asc;
+ERROR 1054 (42S22): Unknown column 'marcas' in 'field list'
+mysql> select marca from tblusuarios group by marca order by marca asc;
++------------+
+| marca      |
++------------+
+| BLACKBERRY |
+| LG         |
+| MOTOROLA   |
+| NOKIA      |
+| SAMSUNG    |
+| SONY       |
++------------+
+6 rows in set (0.00 sec)
+
+mysql> select marca from tblusuarios group by marca order;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> select marca from tblusuarios group by marca;
++------------+
+| marca      |
++------------+
+| SAMSUNG    |
+| LG         |
+| NOKIA      |
+| SONY       |
+| BLACKBERRY |
+| MOTOROLA   |
++------------+
+6 rows in set (0.00 sec)
+
+mysql> select idx, usuario, telefono from tblusuarios where compañia="iusacell" or compañia="unefon";
++-----+---------+--------------+
+| idx | usuario | telefono     |
++-----+---------+--------------+
+|   1 | BRE2271 | 655-330-5736 |
+|   5 | LUI7072 | 655-100-8260 |
+|   6 | DAN2832 | 655-145-2586 |
+|   8 | ROM6520 | 655-330-3263 |
+|   9 | BLA9739 | 655-330-3871 |
+|  11 | DIA6570 | 655-143-3952 |
+|  12 | RIC8283 | 655-145-6049 |
+|  15 | LUC4982 | 655-145-4992 |
+|  18 | JES9640 | 655-330-5143 |
+|  19 | LET4015 | 655-143-4019 |
+|  20 | LUI1076 | 655-100-5085 |
++-----+---------+--------------+
+11 rows in set (0.00 sec)
+
+mysql> select idx, usuario, compañia, telefono from tblusuarios where compañia="iusacell" or compañia="unefon";
++-----+---------+----------+--------------+
+| idx | usuario | compañia | telefono     |
++-----+---------+----------+--------------+
+|   1 | BRE2271 | IUSACELL | 655-330-5736 |
+|   5 | LUI7072 | IUSACELL | 655-100-8260 |
+|   6 | DAN2832 | UNEFON   | 655-145-2586 |
+|   8 | ROM6520 | IUSACELL | 655-330-3263 |
+|   9 | BLA9739 | UNEFON   | 655-330-3871 |
+|  11 | DIA6570 | UNEFON   | 655-143-3952 |
+|  12 | RIC8283 | IUSACELL | 655-145-6049 |
+|  15 | LUC4982 | IUSACELL | 655-145-4992 |
+|  18 | JES9640 | IUSACELL | 655-330-5143 |
+|  19 | LET4015 | UNEFON   | 655-143-4019 |
+|  20 | LUI1076 | UNEFON   | 655-100-5085 |
++-----+---------+----------+--------------+
+11 rows in set (0.00 sec)
+
+mysql> select idx, nombre, telefono, marca from tblusuarios where marca!="motorola" or marca!="nokia";
++-----+-----------+--------------+------------+
+| idx | nombre    | telefono     | marca      |
++-----+-----------+--------------+------------+
+|   1 | BRENDA    | 655-330-5736 | SAMSUNG    |
+|   2 | OSCAR     | 655-143-4181 | LG         |
+|   3 | JOSE      | 655-143-3922 | NOKIA      |
+|   4 | LUIS      | 655-137-1279 | SAMSUNG    |
+|   5 | LUIS      | 655-100-8260 | NOKIA      |
+|   6 | DANIEL    | 655-145-2586 | SONY       |
+|   7 | JAQUELINE | 655-330-5514 | BLACKBERRY |
+|   8 | ROMAN     | 655-330-3263 | LG         |
+|   9 | BLAS      | 655-330-3871 | LG         |
+|  10 | JESSICA   | 655-143-6861 | SAMSUNG    |
+|  11 | DIANA     | 655-143-3952 | SONY       |
+|  12 | RICARDO   | 655-145-6049 | MOTOROLA   |
+|  13 | VALENTINA | 655-137-4253 | BLACKBERRY |
+|  14 | BRENDA    | 655-100-1351 | MOTOROLA   |
+|  15 | LUCIA     | 655-145-4992 | BLACKBERRY |
+|  16 | JUAN      | 655-100-6517 | SAMSUNG    |
+|  17 | ELPIDIO   | 655-145-9938 | MOTOROLA   |
+|  18 | JESSICA   | 655-330-5143 | SONY       |
+|  19 | LETICIA   | 655-143-4019 | BLACKBERRY |
+|  20 | LUIS      | 655-100-5085 | SONY       |
+|  21 | HUGO      | 655-137-3935 | MOTOROLA   |
++-----+-----------+--------------+------------+
+21 rows in set (0.00 sec)
+
+mysql> select idx, nombre, telefono, marca from tblusuarios where marca!="motorola" and marca!="nokia";
++-----+-----------+--------------+------------+
+| idx | nombre    | telefono     | marca      |
++-----+-----------+--------------+------------+
+|   1 | BRENDA    | 655-330-5736 | SAMSUNG    |
+|   2 | OSCAR     | 655-143-4181 | LG         |
+|   4 | LUIS      | 655-137-1279 | SAMSUNG    |
+|   6 | DANIEL    | 655-145-2586 | SONY       |
+|   7 | JAQUELINE | 655-330-5514 | BLACKBERRY |
+|   8 | ROMAN     | 655-330-3263 | LG         |
+|   9 | BLAS      | 655-330-3871 | LG         |
+|  10 | JESSICA   | 655-143-6861 | SAMSUNG    |
+|  11 | DIANA     | 655-143-3952 | SONY       |
+|  13 | VALENTINA | 655-137-4253 | BLACKBERRY |
+|  15 | LUCIA     | 655-145-4992 | BLACKBERRY |
+|  16 | JUAN      | 655-100-6517 | SAMSUNG    |
+|  18 | JESSICA   | 655-330-5143 | SONY       |
+|  19 | LETICIA   | 655-143-4019 | BLACKBERRY |
+|  20 | LUIS      | 655-100-5085 | SONY       |
++-----+-----------+--------------+------------+
+15 rows in set (0.00 sec)
+
+mysql> select compañia, sum(saldo) from tblusuarios where compañia="telcel";
++----------+------------+
+| compañia | sum(saldo) |
++----------+------------+
+| TELCEL   |        550 |
++----------+------------+
+1 row in set (0.00 sec)
+
+mysql>
