@@ -1,0 +1,41 @@
+INSERT INTO cliente (id, nombre, apellido1, apellido2, ciudad, categoria)
+VALUES
+(2, 'Adela', 'Salas', 'Diaz', 'Granada', 200),
+(3, 'Adolfo', 'Rubio', 'Flores', 'Sevilla', NULL),
+(4, 'Adrian', 'Suarez', NULL, 'Jaen', 300),
+(5, 'Marcos', 'Loyola', 'Mendez', 'Almeria', 200),
+(6, 'Maria', 'Santana', 'Moreno', 'Cadiz', 100),
+(7, 'Pilar', 'Ruiz', NULL, 'Sevilla', 300),
+(8,"pepe", 'Ruiz', 'Santana', 'Huelva', 200),
+(9, 'Guillermo', 'Lopez', 'Gomez', 'Granada', 225),
+(10, 'Daniel', 'Santana', 'Loyola', 'Sevilla', 125);
+
+INSERT INTO comercial (id, nombre, apellido1, apellido2, comision)
+VALUES
+(1, 'Daniel', 'Saez', 'Vega', 0.15),
+(2, 'Juan', 'Gomez', 'Lopez', 0.13),
+(3, 'Diego', 'Flores', 'Salas', 0.11),
+(4, 'Marta', 'Herrera', 'Gil', 0.14),
+(5, 'Antonio', 'Carretero', 'Ortega', 0.12),
+(6, 'Manuel', 'Dominguez', 'Hernandez', 0.13),
+(7, 'Antonio', 'Vega', 'Hernandez', 0.11),
+(8, 'Alfredo', 'Ruiz', 'Flores', 0.05);
+
+INSERT INTO pedido (id, cantidad, fecha, id_cliente, id_comercial)
+VALUES
+(1, 150.5, '2017-10-05', 5, 2),
+(2, 270.65, '2016-09-10', 2, 5),
+(3, 65.26, '2017-10-05', 1, 1),
+(4, 110.5, '2016-08-17', 8, 3),
+(5, 948.5, '2017-09-10', 5, 2),
+(6, 2400.6, '2016-07-27', 7, 1),
+(7, 5760, '2015-09-10', 2, 1),
+(8, 1983.43, '2017-10-10', 4, 3),
+(9, 2480.4, '2016-10-10', 8, 6),
+(10, 250.45, '2015-06-27', 8, 2),
+(11, 75.29, '2016-08-17', 3, 7),
+(12, 3045.6, '2017-04-25', 2, 1),
+(13, 545.75, '2019-01-25', 6, 1),
+(14, 145.82, '2017-02-02', 6, 1),
+(15, 370.85, '2019-03-11', 1, 5),
+(16, 2389.23, '2019-03-11', 1, 5);			
