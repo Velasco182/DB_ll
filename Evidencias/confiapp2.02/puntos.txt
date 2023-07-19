@@ -1,0 +1,5 @@
+*si se usa BLOB pueda que trabe la base de datos ,entonces se usa text o varchar para guardar un link tanto en imagen
+como audio.
+*para guardar ubicacion y no complicar se puede guardar por latitud y altitud.
+*el text no tiene limite como tal pero el problema es que para hacer busquedas es menos eficaz que usar varchar y varchar
+si tiene limite.(solo en mysql es que se puede limitar el TEXT).
